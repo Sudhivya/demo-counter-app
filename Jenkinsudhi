@@ -20,8 +20,10 @@ pipeline{
               script{
               
                 sh 'mvn test'
+              }
             }
-         }
+          }
+        }
       }
-  }
-}
+    }
+      
