@@ -3,8 +3,8 @@ pipeline{
     stages{
        stage('Git checkout'){
           steps{
-          }
+              git branch: 'main', url: 'https://github.com/Sudhivya/demo-counter-app.git'
           }
        }
-    
-    }
+   }
+}
