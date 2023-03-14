@@ -82,6 +82,22 @@ pipeline{
                 }
                 
              }
+          stage('push image to dockerhub'){
+          
+             steps{
+                
+                script{
+                   withCredentials([string(credentialsId: 'git_creds', variable: 'docker_hub_cred')]) {
+                   sh 'docker login -u sudhi12 -p ${docker_hub_cred}'
+                   sh 'docker image push sudhi12/$JOB_NAME:v1.$BUILD_ID'
+                   sh 'docker image push sudhi12/$JOB_NAME:latest'
+                   
+                 }
+                   
+               }
                   
+          }
+                  
+      }
    }
 }
