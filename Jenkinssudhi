@@ -46,7 +46,8 @@ pipeline{
                   }
               }
           }
-          stage(upload jar file to nexus){
+          stage('upload jar file to nexus'){
+          
              steps{
              
                 script{
