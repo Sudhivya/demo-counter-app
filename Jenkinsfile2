@@ -1,22 +1,29 @@
 pipeline{
-
-  agent any
-  
-  stages{
-
-     stage("git checkout"){
-
-         steps{
-
-            git branch: 'main', url: 'https://github.com/Sudhivya/demo-counter-app.git'
-          }
-     }
+    
+    agent any 
+    tools { 
+      maven 'M2_HOME'
+    }    
+    stages {
+        
+        stage('Git Checkout'){
+            
+            steps{
+                
+                script{
+                    
+                    git branch: 'main', url: 'https://github.com/Sudhivya/demo-counter-app.git'
+                }
+            }
+        }
+        stage('UNIT testing'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn test'
+                }
+            }
+        }
 }
-     stage("unit testing"){
-
-         steps{
-
-            sh 'mvn test'
-         }
-      }
-  }
