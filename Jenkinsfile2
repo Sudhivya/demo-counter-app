@@ -10,9 +10,9 @@ pipeline{
               git branch: 'main', url: 'https://github.com/Sudhivya/demo-counter-app.git'
           }
        }
-       stage('integration test'){
+       stage('Unit test'){
           steps{
-              sh 'mvn verify -DskiUnitTests'
+              sh 'mvn 'test'
           }
        }
     }
