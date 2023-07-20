@@ -74,5 +74,16 @@ pipeline{
               }
            }
         }
+        stage('Push image to docker hub'){
+          steps{
+              script{
+                withCredentials([string(credentialsId: 'creds_docker', variable: 'creds')]) {
+                sh 'docker login -u sudhi12 -p ${creds}'
+                sh 'docker image push sudhi12/$JOB_NAME:v1.$BUILD_ID'
+                sh 'docker image push sudhi12/$JOB_NAME:latest'
+                 }
+               }
+          }
+        }
     }
 }
